@@ -1,0 +1,197 @@
+// Call graph generator. Jul 21 2021 build, written by Kuoping Hsu, MIT license
+// https://github.com/kuopinghsu/callgraph-gen
+graph: {
+  x: 450
+  y: 30
+  width:  550
+  height: 500
+  color: lightcyan
+  stretch: 4
+  shrink: 10
+
+  node: {
+    title: "_start:0"
+    label: "_start\nPROG: 124\nSTACK: 0"
+    color: white
+  }
+
+  node: {
+    title: "init_stack:0"
+    label: "init_stack\nPROG: 8\nSTACK: 0"
+    color: white
+  }
+
+  edge: { sourcename: "init_stack:0" targetname: "main:0" }
+
+  node: {
+    title: "main:0"
+    label: "main\nPROG: 80\nSTACK: 32"
+    color: white
+  }
+
+  edge: { sourcename: "main:0" targetname: "initialise_board:0" }
+  edge: { sourcename: "main:0" targetname: "initialise_benchmark:0" }
+  edge: { sourcename: "main:0" targetname: "warm_caches:0" }
+  edge: { sourcename: "main:0" targetname: "start_trigger:0" }
+  edge: { sourcename: "main:0" targetname: "benchmark:0" }
+  edge: { sourcename: "main:0" targetname: "stop_trigger:0" }
+  edge: { sourcename: "main:0" targetname: "verify_benchmark:0" }
+
+  node: {
+    title: "writeToCtrl:0"
+    label: "writeToCtrl\nPROG: 20\nSTACK: 0"
+    color: white
+  }
+
+  node: {
+    title: "readFromCtrl:0"
+    label: "readFromCtrl\nPROG: 20\nSTACK: 0"
+    color: white
+  }
+
+  node: {
+    title: "setIntr:0"
+    label: "setIntr\nPROG: 16\nSTACK: 0"
+    color: white
+  }
+
+  node: {
+    title: "initialise_board:0"
+    label: "initialise_board\nPROG: 4\nSTACK: 0"
+    color: white
+  }
+
+  node: {
+    title: "start_trigger:0"
+    label: "start_trigger\nPROG: 44\nSTACK: 16"
+    color: white
+  }
+
+  edge: { sourcename: "start_trigger:0" targetname: "readFromCtrl:0" }
+
+  node: {
+    title: "stop_trigger:0"
+    label: "stop_trigger\nPROG: 96\nSTACK: 16"
+    color: white
+  }
+
+  edge: { sourcename: "stop_trigger:0" targetname: "readFromCtrl:0" }
+  edge: { sourcename: "stop_trigger:0" targetname: "writeToCtrl:0" }
+
+  node: {
+    title: "values_match:0"
+    label: "values_match\nPROG: 12\nSTACK: 0"
+    color: white
+  }
+
+  node: {
+    title: "InitSeed:0"
+    label: "InitSeed\nPROG: 12\nSTACK: 0"
+    color: white
+  }
+
+  node: {
+    title: "RandomInteger:0"
+    label: "RandomInteger\nPROG: 72\nSTACK: 16"
+    color: white
+  }
+
+  edge: { sourcename: "RandomInteger:0" targetname: "__modsi3:0" }
+
+  node: {
+    title: "__modsi3:0"
+    label: "__modsi3\nPROG: 48\nSTACK: 0"
+    color: white
+  }
+
+  edge: { sourcename: "__modsi3:0" targetname: "__udivsi3:0" }
+
+  node: {
+    title: "Multiply:0"
+    label: "Multiply\nPROG: 220\nSTACK: 64"
+    color: white
+  }
+
+  edge: { sourcename: "Multiply:0" targetname: "__mulsi3:0" }
+
+  node: {
+    title: "__mulsi3:0"
+    label: "__mulsi3\nPROG: 36\nSTACK: 0"
+    color: white
+  }
+
+  node: {
+    title: "Test:0"
+    label: "Test\nPROG: 24\nSTACK: 16"
+    color: white
+  }
+
+  edge: { sourcename: "Test:0" targetname: "Multiply:0" }
+
+  node: {
+    title: "benchmark_body:0"
+    label: "benchmark_body\nPROG: 292\nSTACK: 48"
+    color: white
+  }
+
+  edge: { sourcename: "benchmark_body:0" targetname: "Multiply:0" }
+
+  node: {
+    title: "warm_caches:0"
+    label: "warm_caches\nPROG: 24\nSTACK: 16"
+    color: white
+  }
+
+  edge: { sourcename: "warm_caches:0" targetname: "benchmark_body:0" }
+
+  node: {
+    title: "benchmark:0"
+    label: "benchmark\nPROG: 32\nSTACK: 16"
+    color: white
+  }
+
+  edge: { sourcename: "benchmark:0" targetname: "benchmark_body:0" }
+
+  node: {
+    title: "initialise_benchmark:0"
+    label: "initialise_benchmark\nPROG: 224\nSTACK: 32"
+    color: white
+  }
+
+  edge: { sourcename: "initialise_benchmark:0" targetname: "__modsi3:0" }
+
+  node: {
+    title: "verify_benchmark:0"
+    label: "verify_benchmark\nPROG: 104\nSTACK: 1616"
+    color: white
+  }
+
+  edge: { sourcename: "verify_benchmark:0" targetname: "memcmp:0" }
+
+  node: {
+    title: "memcmp:0"
+    label: "memcmp\nPROG: 124\nSTACK: 0"
+    color: white
+  }
+
+  node: {
+    title: "__divsi3:0"
+    label: "__divsi3\nPROG: 8\nSTACK: 0"
+    color: white
+  }
+
+  node: {
+    title: "__udivsi3:0"
+    label: "__udivsi3\nPROG: 72\nSTACK: 0"
+    color: white
+  }
+
+  node: {
+    title: "__umodsi3:0"
+    label: "__umodsi3\nPROG: 52\nSTACK: 0"
+    color: white
+  }
+
+  edge: { sourcename: "__umodsi3:0" targetname: "__udivsi3:0" }
+
+}

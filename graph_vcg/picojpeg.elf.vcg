@@ -1,0 +1,273 @@
+// Call graph generator. Jul 21 2021 build, written by Kuoping Hsu, MIT license
+// https://github.com/kuopinghsu/callgraph-gen
+graph: {
+  x: 450
+  y: 30
+  width:  550
+  height: 500
+  color: lightcyan
+  stretch: 4
+  shrink: 10
+
+  node: {
+    title: "_start:0"
+    label: "_start\nPROG: 124\nSTACK: 0"
+    color: white
+  }
+
+  node: {
+    title: "init_stack:0"
+    label: "init_stack\nPROG: 8\nSTACK: 0"
+    color: white
+  }
+
+  edge: { sourcename: "init_stack:0" targetname: "main:0" }
+
+  node: {
+    title: "main:0"
+    label: "main\nPROG: 80\nSTACK: 32"
+    color: white
+  }
+
+  edge: { sourcename: "main:0" targetname: "initialise_board:0" }
+  edge: { sourcename: "main:0" targetname: "initialise_benchmark:0" }
+  edge: { sourcename: "main:0" targetname: "warm_caches:0" }
+  edge: { sourcename: "main:0" targetname: "start_trigger:0" }
+  edge: { sourcename: "main:0" targetname: "benchmark:0" }
+  edge: { sourcename: "main:0" targetname: "stop_trigger:0" }
+  edge: { sourcename: "main:0" targetname: "verify_benchmark:0" }
+
+  node: {
+    title: "writeToCtrl:0"
+    label: "writeToCtrl\nPROG: 20\nSTACK: 0"
+    color: white
+  }
+
+  node: {
+    title: "readFromCtrl:0"
+    label: "readFromCtrl\nPROG: 20\nSTACK: 0"
+    color: white
+  }
+
+  node: {
+    title: "setIntr:0"
+    label: "setIntr\nPROG: 16\nSTACK: 0"
+    color: white
+  }
+
+  node: {
+    title: "initialise_board:0"
+    label: "initialise_board\nPROG: 4\nSTACK: 0"
+    color: white
+  }
+
+  node: {
+    title: "start_trigger:0"
+    label: "start_trigger\nPROG: 44\nSTACK: 16"
+    color: white
+  }
+
+  edge: { sourcename: "start_trigger:0" targetname: "readFromCtrl:0" }
+
+  node: {
+    title: "stop_trigger:0"
+    label: "stop_trigger\nPROG: 96\nSTACK: 16"
+    color: white
+  }
+
+  edge: { sourcename: "stop_trigger:0" targetname: "readFromCtrl:0" }
+  edge: { sourcename: "stop_trigger:0" targetname: "writeToCtrl:0" }
+
+  node: {
+    title: "pjpeg_need_bytes_callback:0"
+    label: "pjpeg_need_bytes_callback\nPROG: 112\nSTACK: 16"
+    color: white
+  }
+
+  edge: { sourcename: "pjpeg_need_bytes_callback:0" targetname: "memcpy:0" }
+
+  node: {
+    title: "memcpy:0"
+    label: "memcpy\nPROG: 376\nSTACK: 16"
+    color: white
+  }
+
+  node: {
+    title: "benchmark_body:0"
+    label: "benchmark_body\nPROG: 144\nSTACK: 32"
+    color: white
+  }
+
+  edge: { sourcename: "benchmark_body:0" targetname: "pjpeg_decode_init:0" }
+  edge: { sourcename: "benchmark_body:0" targetname: "pjpeg_decode_mcu:0" }
+
+  node: {
+    title: "pjpeg_decode_init:0"
+    label: "pjpeg_decode_init\nPROG: 2596\nSTACK: 96"
+    color: white
+  }
+
+  edge: { sourcename: "pjpeg_decode_init:0" targetname: "getBits:0" }
+  edge: { sourcename: "pjpeg_decode_init:0" targetname: "getChar:0" }
+  edge: { sourcename: "pjpeg_decode_init:0" targetname: "processMarkers:0" }
+  edge: { sourcename: "pjpeg_decode_init:0" targetname: "__mulsi3:0" }
+
+  node: {
+    title: "pjpeg_decode_mcu:0"
+    label: "pjpeg_decode_mcu\nPROG: 7544\nSTACK: 112"
+    color: white
+  }
+
+  edge: { sourcename: "pjpeg_decode_mcu:0" targetname: "huffDecode:0" }
+  edge: { sourcename: "pjpeg_decode_mcu:0" targetname: "__mulsi3:0" }
+  edge: { sourcename: "pjpeg_decode_mcu:0" targetname: "getBits:0" }
+  edge: { sourcename: "pjpeg_decode_mcu:0" targetname: "upsampleCrH:0" }
+  edge: { sourcename: "pjpeg_decode_mcu:0" targetname: "upsampleCrV:0" }
+  edge: { sourcename: "pjpeg_decode_mcu:0" targetname: "getChar:0" }
+  edge: { sourcename: "pjpeg_decode_mcu:0" targetname: "upsampleCbH:0" }
+  edge: { sourcename: "pjpeg_decode_mcu:0" targetname: "upsampleCbV:0" }
+  edge: { sourcename: "pjpeg_decode_mcu:0" targetname: "upsampleCb:0" }
+  edge: { sourcename: "pjpeg_decode_mcu:0" targetname: "upsampleCr:0" }
+
+  node: {
+    title: "verify_benchmark:0"
+    label: "verify_benchmark\nPROG: 132\nSTACK: 16"
+    color: white
+  }
+
+  edge: { sourcename: "verify_benchmark:0" targetname: "memcmp:0" }
+
+  node: {
+    title: "memcmp:0"
+    label: "memcmp\nPROG: 128\nSTACK: 0"
+    color: white
+  }
+
+  node: {
+    title: "initialise_benchmark:0"
+    label: "initialise_benchmark\nPROG: 4\nSTACK: 0"
+    color: white
+  }
+
+  node: {
+    title: "warm_caches:0"
+    label: "warm_caches\nPROG: 24\nSTACK: 16"
+    color: white
+  }
+
+  edge: { sourcename: "warm_caches:0" targetname: "benchmark_body:0" }
+
+  node: {
+    title: "benchmark:0"
+    label: "benchmark\nPROG: 28\nSTACK: 16"
+    color: white
+  }
+
+  edge: { sourcename: "benchmark:0" targetname: "benchmark_body:0" }
+
+  node: {
+    title: "upsampleCb:0"
+    label: "upsampleCb\nPROG: 588\nSTACK: 0"
+    color: white
+  }
+
+  node: {
+    title: "upsampleCbH:0"
+    label: "upsampleCbH\nPROG: 380\nSTACK: 0"
+    color: white
+  }
+
+  node: {
+    title: "upsampleCbV:0"
+    label: "upsampleCbV\nPROG: 380\nSTACK: 0"
+    color: white
+  }
+
+  node: {
+    title: "upsampleCr:0"
+    label: "upsampleCr\nPROG: 600\nSTACK: 0"
+    color: white
+  }
+
+  node: {
+    title: "upsampleCrH:0"
+    label: "upsampleCrH\nPROG: 392\nSTACK: 0"
+    color: white
+  }
+
+  node: {
+    title: "upsampleCrV:0"
+    label: "upsampleCrV\nPROG: 392\nSTACK: 0"
+    color: white
+  }
+
+  node: {
+    title: "getChar:0"
+    label: "getChar\nPROG: 232\nSTACK: 16"
+    color: white
+  }
+
+  edge: { sourcename: "getChar:0" targetname: "__unknown__:0" }
+
+  node: {
+    title: "__unknown__:0"
+    label: "__unknown__\nPROG: 0\nSTACK: 0"
+    color: lightgrey
+  }
+
+  node: {
+    title: "getOctet.part.0:0"
+    label: "getOctet.part.0\nPROG: 100\nSTACK: 16"
+    color: white
+  }
+
+  edge: { sourcename: "getOctet.part.0:0" targetname: "getChar:0" }
+
+  node: {
+    title: "getBit:0"
+    label: "getBit\nPROG: 152\nSTACK: 32"
+    color: white
+  }
+
+  edge: { sourcename: "getBit:0" targetname: "getChar:0" }
+  edge: { sourcename: "getBit:0" targetname: "getOctet_part_0:0" }
+
+  node: {
+    title: "getOctet_part_0:0"
+    label: "getOctet_part_0\nPROG: 0\nSTACK: 0"
+    color: lightgrey
+  }
+
+  node: {
+    title: "huffDecode:0"
+    label: "huffDecode\nPROG: 216\nSTACK: 32"
+    color: white
+  }
+
+  edge: { sourcename: "huffDecode:0" targetname: "getBit:0" }
+
+  node: {
+    title: "getBits:0"
+    label: "getBits\nPROG: 340\nSTACK: 48"
+    color: white
+  }
+
+  edge: { sourcename: "getBits:0" targetname: "getChar:0" }
+  edge: { sourcename: "getBits:0" targetname: "getOctet_part_0:0" }
+
+  node: {
+    title: "processMarkers:0"
+    label: "processMarkers\nPROG: 1172\nSTACK: 96"
+    color: white
+  }
+
+  edge: { sourcename: "processMarkers:0" targetname: "getBits:0" }
+  edge: { sourcename: "processMarkers:0" targetname: "__mulsi3:0" }
+
+  node: {
+    title: "__mulsi3:0"
+    label: "__mulsi3\nPROG: 36\nSTACK: 0"
+    color: white
+  }
+
+}
