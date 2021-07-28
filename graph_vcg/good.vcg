@@ -1,0 +1,197 @@
+// Call graph generator. Jul 21 2021 build, written by Kuoping Hsu, MIT license
+// https://github.com/kuopinghsu/callgraph-gen
+graph: {
+  x: 450
+  y: 30
+  width:  550
+  height: 500
+  color: lightcyan
+  stretch: 4
+  shrink: 10
+
+  node: {
+    title: "_start:0"
+    label: "_start\nPROG: 124\nSTACK: 0"
+    color: white
+  }
+
+  node: {
+    title: "init_stack:0"
+    label: "init_stack\nPROG: 8\nSTACK: 0"
+    color: white
+  }
+
+  edge: { sourcename: "init_stack:0" targetname: "main:0" }
+
+  node: {
+    title: "main:0"
+    label: "main\nPROG: 80\nSTACK: 32"
+    color: white
+  }
+
+  edge: { sourcename: "main:0" targetname: "initialise_board:0" }
+  edge: { sourcename: "main:0" targetname: "initialise_benchmark:0" }
+  edge: { sourcename: "main:0" targetname: "warm_caches:0" }
+  edge: { sourcename: "main:0" targetname: "start_trigger:0" }
+  edge: { sourcename: "main:0" targetname: "benchmark:0" }
+  edge: { sourcename: "main:0" targetname: "stop_trigger:0" }
+  edge: { sourcename: "main:0" targetname: "verify_benchmark:0" }
+
+  node: {
+    title: "writeToCtrl:0"
+    label: "writeToCtrl\nPROG: 20\nSTACK: 0"
+    color: white
+  }
+
+  node: {
+    title: "readFromCtrl:0"
+    label: "readFromCtrl\nPROG: 20\nSTACK: 0"
+    color: white
+  }
+
+  node: {
+    title: "setIntr:0"
+    label: "setIntr\nPROG: 16\nSTACK: 0"
+    color: white
+  }
+
+  node: {
+    title: "initialise_board:0"
+    label: "initialise_board\nPROG: 4\nSTACK: 0"
+    color: white
+  }
+
+  node: {
+    title: "start_trigger:0"
+    label: "start_trigger\nPROG: 44\nSTACK: 16"
+    color: white
+  }
+
+  edge: { sourcename: "start_trigger:0" targetname: "readFromCtrl:0" }
+
+  node: {
+    title: "stop_trigger:0"
+    label: "stop_trigger\nPROG: 96\nSTACK: 16"
+    color: white
+  }
+
+  edge: { sourcename: "stop_trigger:0" targetname: "readFromCtrl:0" }
+  edge: { sourcename: "stop_trigger:0" targetname: "writeToCtrl:0" }
+
+  node: {
+    title: "benchmark_body:0"
+    label: "benchmark_body\nPROG: 156\nSTACK: 32"
+    color: white
+  }
+
+  edge: { sourcename: "benchmark_body:0" targetname: "srand_beebs:0" }
+  edge: { sourcename: "benchmark_body:0" targetname: "rand_beebs:0" }
+
+  node: {
+    title: "srand_beebs:0"
+    label: "srand_beebs\nPROG: 12\nSTACK: 0"
+    color: white
+  }
+
+  node: {
+    title: "rand_beebs:0"
+    label: "rand_beebs\nPROG: 96\nSTACK: 0"
+    color: white
+  }
+
+  node: {
+    title: "crc32pseudo:0"
+    label: "crc32pseudo\nPROG: 104\nSTACK: 16"
+    color: white
+  }
+
+  edge: { sourcename: "crc32pseudo:0" targetname: "rand_beebs:0" }
+
+  node: {
+    title: "initialise_benchmark:0"
+    label: "initialise_benchmark\nPROG: 4\nSTACK: 0"
+    color: white
+  }
+
+  node: {
+    title: "warm_caches:0"
+    label: "warm_caches\nPROG: 24\nSTACK: 16"
+    color: white
+  }
+
+  edge: { sourcename: "warm_caches:0" targetname: "benchmark_body:0" }
+
+  node: {
+    title: "benchmark:0"
+    label: "benchmark\nPROG: 32\nSTACK: 16"
+    color: white
+  }
+
+  edge: { sourcename: "benchmark:0" targetname: "benchmark_body:0" }
+
+  node: {
+    title: "verify_benchmark:0"
+    label: "verify_benchmark\nPROG: 20\nSTACK: 0"
+    color: white
+  }
+
+  node: {
+    title: "init_heap_beebs:0"
+    label: "init_heap_beebs\nPROG: 32\nSTACK: 0"
+    color: white
+  }
+
+  node: {
+    title: "check_heap_beebs:0"
+    label: "check_heap_beebs\nPROG: 32\nSTACK: 0"
+    color: white
+  }
+
+  node: {
+    title: "malloc_beebs:0"
+    label: "malloc_beebs\nPROG: 68\nSTACK: 0"
+    color: white
+  }
+
+  node: {
+    title: "calloc_beebs:0"
+    label: "calloc_beebs\nPROG: 120\nSTACK: 16"
+    color: white
+  }
+
+  edge: { sourcename: "calloc_beebs:0" targetname: "__mulsi3:0" }
+  edge: { sourcename: "calloc_beebs:0" targetname: "memset:0" }
+
+  node: {
+    title: "__mulsi3:0"
+    label: "__mulsi3\nPROG: 36\nSTACK: 0"
+    color: white
+  }
+
+  node: {
+    title: "memset:0"
+    label: "memset\nPROG: 216\nSTACK: 0"
+    color: white
+  }
+
+  edge: { sourcename: "memset:0" targetname: "__unknown__:0" }
+
+  node: {
+    title: "realloc_beebs:0"
+    label: "realloc_beebs\nPROG: 100\nSTACK: 0"
+    color: white
+  }
+
+  node: {
+    title: "free_beebs:0"
+    label: "free_beebs\nPROG: 4\nSTACK: 0"
+    color: white
+  }
+
+  node: {
+    title: "__unknown__:0"
+    label: "__unknown__\nPROG: 0\nSTACK: 0"
+    color: lightgrey
+  }
+
+}
